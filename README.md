@@ -18,3 +18,7 @@ python3 -m pip3 install fastapi jinja2 uvicorn
 ```bash
 python3 main.py
 ```
+ИЛИ
+```bash
+uvicorn main:app --host 0.0.0.0 --port 8000
+```
