@@ -39,13 +39,13 @@ pipeline {
                 echo "Проверяем Dockerfile"
 
                 sh '''
-                if ! command -v hadolint >/dev/null 2>&1; then
-                    wget -qO hadolint https://github.com/hadolint/hadolint/releases/latest/download/hadolint-Linux-x86_64
+                if [ ! -f hadolint ]; then
+                    echo "Скачиваем hadolint локально"
+                    wget -q https://github.com/hadolint/hadolint/releases/latest/download/hadolint-Linux-x86_64 -O hadolint
                     chmod +x hadolint
-                    mv hadolint /usr/local/bin/hadolint
                 fi
 
-                hadolint Dockerfile
+                ./hadolint Dockerfile
                 '''
             }
         }
